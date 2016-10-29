@@ -29,7 +29,7 @@ do
     let "imagecount += 1"
 done
 
-ffmpeg -i ${date}/frame_%04d.jpg -preset veryfast ${date}_daily.mp4
+avconv -i ${date}/frame_%04d.jpg -preset veryfast ${date}_daily.mp4
 rm -rf ${date}
 
 /usr/local/bin/aws s3 cp ${date}_daily.mp4 s3://lunt-security/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
